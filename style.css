@@ -1,160 +1,91 @@
 /* ==========================================================================
-   1. CSS Reset & Base Styles
+   6. Hero Section Styling
    ========================================================================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffffff;
-}
-
-/* ==========================================================================
-   2. Interactive Door Preloader (Gateway)
-   ========================================================================== */
-#door-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  display: flex;
-  overflow: hidden;
-  perspective: 1200px;
-  cursor: pointer;
-  background-color: #1a0f08;
-}
-
-/* Mango Leaves / Toran Overlay */
-.toran-leaves {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background-image: url('images/mango-leaves.png');
-  background-size: contain;
-  background-repeat: repeat-x;
-  z-index: 10001;
-  transform-origin: top center;
-  animation: windSway 4s ease-in-out infinite;
-  pointer-events: none;
-}
-
-/* Door Split Definition */
-.door {
-  width: 50%;
-  height: 100%;
-  background-color: #5c3a21; 
-  background-image: url('images/wooden-texture.jpg'); 
-  background-size: cover;
-  background-position: center;
-  position: absolute;
-  top: 0;
-  transition: transform 1.6s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.85);
-}
-
-.left-door {
-  left: 0;
-  transform-origin: left center;
-  border-right: 2px solid #2e1a0e;
-}
-
-.right-door {
-  right: 0;
-  transform-origin: right center;
-  border-left: 2px solid #2e1a0e;
-}
-
-/* ==========================================================================
-   3. Gateway UI Elements (Swastika & Typography)
-   ========================================================================== */
-.door-center-ui {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10000;
-  text-align: center;
-  width: 100%;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-}
-
-.swastika-symbol {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 24px auto;
-  background-image: url('images/swastika.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.5));
-}
-
-.click-text {
-  color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.9);
-  animation: pulseGlow 1.8s infinite alternate;
-}
-
-/* ==========================================================================
-   4. Animation Keyframes & State Classes
-   ========================================================================== */
-.door.open-left {
-  transform: rotateY(-105deg) translateX(-100%);
-}
-
-.door.open-right {
-  transform: rotateY(105deg) translateX(100%);
-}
-
-@keyframes windSway {
-  0%, 100% { transform: rotate(0deg) skewX(0deg); }
-  50% { transform: rotate(1.5deg) skewX(1deg); }
-}
-
-@keyframes pulseGlow {
-  from { opacity: 0.5; transform: scale(0.98); }
-  to { opacity: 1; transform: scale(1.02); }
-}
-
-/* ==========================================================================
-   5. Main Website Content States
-   ========================================================================== */
-.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-#main-website {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fffaf5;
-  transition: opacity 1.2s ease-in-out;
-}
-
 .hero-section {
-  text-align: center;
-  padding: 20px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #fffaf5; /* Warm off-white background */
+    text-align: center;
 }
 
-.hero-section h1 {
-  font-size: 2.5rem;
-  color: #721c24;
+/* Elegant traditional corner line-art or accents */
+.hero-accent-top {
+    position: absolute;
+    top: 20px;
+    width: 80%;
+    max-width: 400px;
+    height: 30px;
+    background-image: url('images/gold-line-top.png'); /* Optional traditional design accent */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #b5893d; /* Elegant gold tone */
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.family-name {
+    font-size: 2.8rem;
+    color: #721c24; /* Deep Burgundy */
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.invitation-text {
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.6;
+}
+
+.ceremony-badge {
+    padding: 12px 30px;
+    margin: 10px auto;
+    border-top: 2px solid #b5893d;
+    border-bottom: 2px solid #b5893d;
+    display: inline-block;
+}
+
+.ceremony-badge h2 {
+    font-size: 2.4rem;
+    color: #721c24;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.hero-quote {
+    font-size: 0.95rem;
+    color: #777777;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Smooth fade-in up effect once content reveals */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
