@@ -1,7 +1,70 @@
-@keyframes windSway {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(2deg) skewX(1deg); }
+/* Poore door container ka setup */
+#door-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999; /* Taaki yeh sabse upar dikhe */
+  display: flex;
+  overflow: hidden;
+  perspective: 1200px; /* Isse 3D depth aati hai darwaza khulne par */
 }
-.toran-leaves {
-  animation: windSway 4s ease-in-out infinite;
+
+/* Dono door ki common styling */
+.door {
+  width: 50%;
+  height: 100%;
+  /* Yahan apne ultra-realistic wood texture ki image ka link dalna */
+  background-image: url('images/wooden-texture.jpg'); 
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Ekdam smooth dynamic opening effect */
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.6); /* Realistic look ke liye shadow */
+}
+
+.left-door {
+  left: 0;
+  transform-origin: left center; /* Takki darwaza chaukhat se khule */
+  border-right: 2px solid #3d2314; /* Dono pallo ke beech ka halka gap */
+}
+
+.right-door {
+  right: 0;
+  transform-origin: right center;
+}
+
+/* === YEH HAI ANIMATION LOGIC === */
+/* Jab JS class add karega, tab ye transform chalega */
+.door.open-left {
+  transform: rotateY(-90deg) translateX(-100%); /* 3D me ghum ke left bhagega */
+}
+
+.door.open-right {
+  transform: rotateY(90deg) translateX(100%); /* 3D me ghum ke right bhagega */
+}
+
+/* Center UI (Swastika aur text) */
+.door-center-ui {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  text-align: center;
+  transition: opacity 0.5s ease;
+}
+
+/* Main Website Jo Pehle Chupi Rahegi */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease;
+}
+
+#main-website:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
 }
